@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing</title>
+    <style>
+        .container {
+            width: 70%;
+            margin: auto;
+            font-family: monospace;
+        }
+        ul {
+            list-style: none;
+        }
+        button {
+            border: none;
+        }
+        li > * {
+            margin: 0 20px 20px 0;
+            padding: 5px;
+        }
+        .neues-element {
+            border-top: 1px solid black;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="listen-titel">
+            <h1>Liste 1</h1>
+            <hr>
+        </div>
+        <div class="liste">
+            <ul>
+                <li><input type="checkbox" class="checkbox"><span>Müuch</span><button>🗑️</button></li>
+                <li><input type="checkbox" class="checkbox"><span>Apfel</span><button>🗑️</button></li>
+            </ul>
+        </div>
+        <div class="neues-element">
+            <input type="text" list="newElement" placeholder="Neues Produkt">
+            <datalist id="newElement">
+                <option disabled selected value="Auswählen...">Auswählen...</option>
+                <option value="Müesli">Müesli</option>
+                <option value="Banane">Banane</option>
+                <option value="Schoggi">Schoggi</option>
+                <option value="Birchermüesli">Birchermüesli</option>
+            </datalist>
+            <button>Hinzufügen</button>
+        </div>
+    </div>
+</body>
+</html>
