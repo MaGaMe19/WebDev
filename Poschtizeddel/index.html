@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poschtizeddel</title>
+    <style>
+        html {
+            margin: 0;
+            padding: 2em;
+            font-family: monospace;
+        }
+        ::placeholder {
+            font-family: monospace;
+        }
+    </style>
+    <script src="https://unpkg.com/vue@next"></script> <!-- vue.js CDN (Content Delivery Network)-->
+</head>
+<body>
+    <div id="app">
+        <h1>Poschtizeddel</h1>
+        <ul>
+            <li>Milch <button>&check;</button></li>
+            <li>Härdöpfu <button>&check;</button></li>
+        </ul>
+        <input type="text" v-model="neuesElement" placeholder="Neues Element">
+        <button>+</button>
+        <br><br>
+        Neues Element: {{neuesElement}}
+    </div>
+
+    <script>
+        // Unser Code
+        let ref = Vue.ref;
+        console.log("Hello World!")
+        Vue.createApp({
+            setup() {
+                console.log("vue setup initialisation");
+
+                let elemente = [
+                    "Milch",
+                    "Härdöpfu",
+                ];
+
+                let neuesElement = ref("");
+
+                function erledigt(element) {
+                    
+                }
+
+                function elementHinzufügen(name) {
+                    
+                }
+
+                return {
+                    "elemente": elemente,
+                    "neuesElement": neuesElement,
+                    "erledigt": erledigt,
+                    "elementHinzufügen": elementHinzufügen,
+                };
+            }
+        }).mount("#app");
+    </script>
+</body>
+</html>
