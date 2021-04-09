@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testing</title>
     <style>
+        button, input, textarea {
+            outline: none;
+        }
         .container {
             width: 70%;
             margin: auto;
@@ -14,22 +17,36 @@
             list-style: none;
         }
         button {
-            border: none;
+            border: 1px solid #dedede;
+            background-color: #dbdbdb;
+        }
+        button:hover {
+            background-color: #bdbdbd;
+        }
+        button:active {
+            border: 1px solid #202020;
+            
         }
         li > * {
             margin: 0 20px 20px 0;
             padding: 5px;
         }
         .neues-element {
-            border-top: 1px solid black;
             padding-top: 20px;
+        }
+        .input {
+            font-family: monospace;
+            height: 30px;
+        }
+        .listen-titel h1 {
+            margin: 30px 0 30px 0;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="listen-titel">
-            <h1>Liste 1</h1>
+            <h1>Poschtizeddel 1</h1>
             <hr>
         </div>
         <div class="liste">
@@ -38,16 +55,16 @@
                 <li><input type="checkbox" class="checkbox"><span>Apfel</span><button>🗑️</button></li>
             </ul>
         </div>
+        <hr>
         <div class="neues-element">
-            <input type="text" list="newElement" placeholder="Neues Produkt">
-            <datalist id="newElement">
-                <option disabled selected value="Auswählen...">Auswählen...</option>
+            <input type="text" list="chooseNewElement" placeholder="Neues Produkt" class="input">
+            <datalist id="chooseNewElement">
                 <option value="Müesli">Müesli</option>
                 <option value="Banane">Banane</option>
                 <option value="Schoggi">Schoggi</option>
                 <option value="Birchermüesli">Birchermüesli</option>
             </datalist>
-            <button>Hinzufügen</button>
+            <button class="input">Hinzufügen</button>
         </div>
     </div>
 </body>
