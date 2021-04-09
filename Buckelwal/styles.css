@@ -1,0 +1,102 @@
+/* CSS selectors: https://www.w3schools.com/cssref/css_selectors.asp */
+/* NOTE: Am besten schaust du die Website auf deinem Surface an, da ich auch mit einem Surface gearbeitet habe. */
+
+:root {
+    --color-d: #1b212c;
+    --color-l: #f0f0f0;
+    --color-b: #4971bd;
+}
+@media screen and (prefers-color-scheme:light) {
+    html {
+        color: var(--color-d);
+        background-color: var(--color-l);
+    }
+}
+@media screen and (prefers-color-scheme:dark) {
+    html {
+        color: var(--color-l);
+        background-color: var(--color-d);
+    }
+}
+body {
+    width: 80%;
+    margin: auto;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    transition: .5s;
+    padding-bottom: 50px;
+}
+h1 {
+    border-bottom: 2px solid var(--color-b);
+    font-size: 2.7em;
+}
+p {
+    font-size: 1.1em;
+}
+.abstract {
+    margin: 40px 0 70px 0;
+}
+table {
+    border: 1px solid var(--color-b);
+    width: 40%;
+    padding-top: 20px;
+    float: left;
+    margin: 0 50px 30px 0;
+}
+tr:nth-child(2) > td {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+td > img {
+    width: 80%;
+    margin: 20px 0 20px 0;
+    float: left;
+}
+dl {
+    font-size: 1.1em;
+}
+dt {
+    padding: 10px;
+}
+dt::after {
+    content: ':';
+}
+dd {
+    margin-bottom: 20px;
+}
+.ueberschrift {
+    font-size: 1.5em;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-b);
+}
+.systematik {
+    font-size: 1.5em;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-b);
+}
+h2 {
+    display: inline;
+    font-size: 2em;
+    text-decoration: var(--color-b);
+    text-decoration-line: underline;
+}
+h2 + img {
+    float: left;
+    width: 20%;
+    margin: 0 20px 10px 0;
+}
+h2:last-of-type {
+    margin-top: 35px;
+}
+p:last-of-type {
+    clear: left;
+}
+hr {
+    margin: 30px 0 30px 0;
+}
+a:link {
+    color: #80d4ff;
+}
+a:visited {
+    color: var(--color-b);
+}
