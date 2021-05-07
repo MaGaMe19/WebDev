@@ -4,62 +4,112 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poschtizeddel</title>
-    <style>
-        html {
-            margin: 0;
-            padding: 2em;
-            font-family: monospace;
-        }
-        ::placeholder {
-            font-family: monospace;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/vue@next"></script> <!-- vue.js CDN (Content Delivery Network)-->
 </head>
 <body>
     <div id="app">
-        <h1>Poschtizeddel</h1>
-        <ul>
-            <li>Milch <button>&check;</button></li>
-            <li>Härdöpfu <button>&check;</button></li>
-        </ul>
-        <input type="text" v-model="neuesElement" placeholder="Neues Element">
-        <button>+</button>
-        <br><br>
-        Neues Element: {{neuesElement}}
+        <div id="header">
+            <h1>Poschtizeddel von
+                <span v-if="loggedIn">{{vorname}}</span>
+                <input
+                type="text"
+                v-else 
+                placeholder="Name (⏎)"
+                v-model="nameInput"
+                @keyup.enter="saveName"
+                id="nameInput"
+                autofocus>
+            </h1>
+        </div>
+        <hr>
+
+        <div class="section">
+            <h2>Offen</h2>
+                <ul>
+                <li v-for="eintrag of einkaufsListe">{{eintrag}} <button>&check;</button></li>
+            </ul>
+
+            <input type="text" v-model="neuerEintrag" placeholder="Neuer Eintrag" list="itemList">
+            <datalist id="itemList">
+                <option v-for="suggestion of suggestions" :value="suggestion">{{suggestion}}</option>
+            </datalist>
+            <button @click="addEntry(neuerEintrag)">+</button>
+        </div>
+        <hr>
+
+        <div class="section">
+            <h2>Erledigt</h2>
+        </div>
     </div>
 
     <script>
         // Unser Code
+
         let ref = Vue.ref;
-        console.log("Hello World!")
+        let computed = Vue.computed;
+
         Vue.createApp({
             setup() {
-                console.log("vue setup initialisation");
+                /* ========================= username ========================= */
+                let name = ref(localStorage.getItem("name"));
+                let loggedIn = computed(function () {
+                    return name.value != null;
+                })
 
-                let elemente = [
+                let nameInput = ref("");
+
+                function saveName() {
+                    name.value = nameInput.value;
+                    localStorage.setItem("name", name.value);
+                }
+
+                /* ========================== Zettel ========================== */
+                let einkaufsListe = [1, 2, 3];
+                let neuerEintrag = ref("");
+
+                function addEntry(eintrag) {
+                    console.log("Function addEntry was called")
+                    console.log("'" + eintrag + "'' wurde hinzugefügt.")
+                }
+
+                let suggestions = [
+                    "Äpfel",
+                    "Bananen",
+                    "Orangen",
                     "Milch",
-                    "Härdöpfu",
-                ];
-
-                let neuesElement = ref("");
-
-                function erledigt(element) {
-                    
-                }
-
-                function elementHinzufügen(name) {
-                    
-                }
-
+                    "Schoggi",
+                ]
+                
+                /* ========================== return ========================== */
                 return {
-                    "elemente": elemente,
-                    "neuesElement": neuesElement,
-                    "erledigt": erledigt,
-                    "elementHinzufügen": elementHinzufügen,
+                    "vorname": name,
+                    "addEntry": addEntry,
+                    "einkaufsListe": einkaufsListe,
+                    "suggestions": suggestions,
+                    "neuerEintrag": neuerEintrag,
+                    loggedIn,
+                    saveName,
+                    nameInput,
                 };
             }
         }).mount("#app");
+
+        /* ========================= responsive design ======================== */
+        var app = document.getElementById("app");
+        function adjustAppWidth() {
+            if (window.innerWidth > 1000) {
+                app.style.width = "55%";
+            } else if (window.innerWidth > 750) {
+                app.style.width = "70%";
+            } else if (window.innerWidth > 600) {
+                app.style.width = "85%";
+            } else if (window.innerWidth >= 300) {
+                app.style.width = "95%";
+            }
+        }
+        addEventListener("load", adjustAppWidth)
+        addEventListener("resize", adjustAppWidth)
     </script>
 </body>
 </html>

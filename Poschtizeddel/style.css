@@ -1,0 +1,49 @@
+html, body {
+    margin-top: 1em;
+    font-family: monospace;
+    background-color: #d0ffdb;
+}
+h2, h3 {
+    margin: 0;
+}
+input[type=text] {
+    font-family: monospace;
+    outline: none;
+}
+hr {
+    border: 1px solid #6aa879;
+}
+button {
+    text-align: center;
+    font-family: monospace;
+}
+#app {
+    margin: auto;
+    transition: width .3s;
+}
+.section {
+    margin: 0 0 30px 30px;
+}
+#header {
+    text-align: center;
+}
+#nameInput {
+    border: none;
+    border-radius: 3px;
+    padding-left: 5px;
+    background-color: #7c9682;
+    font-weight: bold;
+    font-size: 0.9em;
+    width: 120px;
+    color: white;
+}
+#nameInput::placeholder {
+    color: white;
+    text-align: center;
+}
+li {
+    margin-bottom: 10px;
+}
+::placeholder {
+    font-family: monospace;
+}
